@@ -31,6 +31,9 @@ public class Vendas extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
+        ScrollPane = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblVendas = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,7 +79,7 @@ public class Vendas extends javax.swing.JFrame {
                 .addComponent(btnSair)
                 .addGap(154, 154, 154)
                 .addComponent(lblTitulo)
-                .addGap(0, 179, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         painel2Layout.setVerticalGroup(
             painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,17 +91,40 @@ public class Vendas extends javax.swing.JFrame {
             .addComponent(lblTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
+        tblVendas.setBackground(new java.awt.Color(35, 35, 35));
+        tblVendas.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        tblVendas.setForeground(new java.awt.Color(248, 248, 255));
+        tblVendas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Nome", "Valor", "Status"
+            }
+        ));
+        tblVendas.setSelectionBackground(new java.awt.Color(248, 248, 255));
+        tblVendas.setSelectionForeground(new java.awt.Color(248, 248, 255));
+        jScrollPane1.setViewportView(tblVendas);
+
+        ScrollPane.setViewportView(jScrollPane1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(painel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(painel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 264, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,10 +200,13 @@ public class Vendas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ScrollPane;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel painel2;
+    private javax.swing.JTable tblVendas;
     // End of variables declaration//GEN-END:variables
 }
