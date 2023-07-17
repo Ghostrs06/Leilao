@@ -1,5 +1,7 @@
 package pjleilao;
 
+import Produtos.Produtos;
+import Produtos.ProdutosDao;
 import javax.swing.JOptionPane;
 
 public class Cadastro extends javax.swing.JFrame {
