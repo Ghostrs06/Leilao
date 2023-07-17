@@ -12,6 +12,7 @@ public class Listagem extends javax.swing.JFrame {
 
     public Listagem() {
         initComponents();
+        this.preencherTebela();
     }
 
     @SuppressWarnings("unchecked")
@@ -229,7 +230,8 @@ public class Listagem extends javax.swing.JFrame {
     }//GEN-LAST:event_tblListaProdutosMouseClicked
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-        
+        Vendas v = new Vendas();
+        v.setVisible(true);
     }//GEN-LAST:event_btnVendasActionPerformed
 
     public static void main(String args[]) {
