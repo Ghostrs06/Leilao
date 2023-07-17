@@ -1,5 +1,13 @@
 package pjleilao;
 
+import Conect.Conexao;
+import Produtos.Produtos;
+import Produtos.ProdutosDao;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 public class Listagem extends javax.swing.JFrame {
 
     public Listagem() {
@@ -221,8 +229,7 @@ public class Listagem extends javax.swing.JFrame {
     }//GEN-LAST:event_tblListaProdutosMouseClicked
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-        Venda v = new Venda();
-        v.setVisible(true);
+        
     }//GEN-LAST:event_btnVendasActionPerformed
 
     public static void main(String args[]) {
@@ -252,4 +259,73 @@ public class Listagem extends javax.swing.JFrame {
     private javax.swing.JTable tblListaProdutos;
     private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
+
+    private void preencherTebela() {
+        ProdutosDao dao = new ProdutosDao();
+
+        List<Produtos> listaProduto = dao.listagemProduto();
+
+        DefaultTableModel tabelaFilmes = (DefaultTableModel) tblListaProdutos.getModel();
+
+        tblListaProdutos.setRowSorter(new TableRowSorter(tabelaFilmes));
+
+        tabelaFilmes.setNumRows(0);
+
+        for (Produtos p : listaProduto) {
+            Object[] obj = new Object[]{
+                p.getId(),
+                p.getNome(),
+                String.valueOf(p.getValor()),
+                p.getStatus(),};
+
+            tabelaFilmes.addRow(obj);
+        }
+    }
+
+    private void consulta(int id) {
+        ProdutosDao dao = new ProdutosDao();
+        Conexao c = new Conexao();
+        boolean status = c.conectar();
+        if (status == true) {
+            Produtos p = dao.consultar(id);
+            System.out.println(dao.consultar(id));
+            if (p == null) {
+                JOptionPane.showMessageDialog(null, "Id não localizado");
+            } else {
+                txtId.setText(String.valueOf(p.getId()));
+            }
+            c.desconectar();
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro de conexão");
+        }
+    }
+
+    private void atualizar() {
+        Produtos p = new Produtos();
+        ProdutosDao dao = new ProdutosDao();
+        Conexao c = new Conexao();
+        boolean status = c.conectar();
+        int resposta;
+
+        int idd = Integer.parseInt(txtId.getText());
+        p.setId(idd);
+
+        if (status == false) {
+            JOptionPane.showMessageDialog(null, "Erro de conexão", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else if (txtId.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo id não preenchido", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
+            resposta = dao.atualizar(p);
+            switch (resposta) {
+                case 1 -> {
+                    JOptionPane.showMessageDialog(null, "Dados atualizados com sucesso");
+                }
+                case 1062 ->
+                    JOptionPane.showMessageDialog(null, "Produto já foi vendido");
+                default ->
+                    JOptionPane.showMessageDialog(null, "Erro ao tentar inserir dados");
+            }
+            c.desconectar();
+        }
+    }
 }
