@@ -11,6 +11,7 @@ public class Vendas extends javax.swing.JFrame {
 
     public Vendas() {
         initComponents();
+        this.preencherTela();
     }
 
     @SuppressWarnings("unchecked")
