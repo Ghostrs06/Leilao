@@ -12,6 +12,7 @@ public class Listagem extends javax.swing.JFrame {
 
     public Listagem() {
         initComponents();
+        this.preencherTebela();
     }
 
     @SuppressWarnings("unchecked")
@@ -138,7 +139,7 @@ public class Listagem extends javax.swing.JFrame {
         btnVendas.setBackground(new java.awt.Color(35, 35, 35));
         btnVendas.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         btnVendas.setForeground(new java.awt.Color(0, 191, 255));
-        btnVendas.setText("Vendas");
+        btnVendas.setText("Tela de Vendas");
         btnVendas.setToolTipText("Clique para vender o produto");
         btnVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +230,8 @@ public class Listagem extends javax.swing.JFrame {
     }//GEN-LAST:event_tblListaProdutosMouseClicked
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-        
+        Vendas v = new Vendas();
+        v.setVisible(true);
     }//GEN-LAST:event_btnVendasActionPerformed
 
     public static void main(String args[]) {
@@ -242,18 +244,14 @@ public class Listagem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSair1;
     private javax.swing.JButton btnVendas;
     private javax.swing.JButton btnVender;
-    private javax.swing.JButton btnVoltar;
     private javax.swing.JButton btnVoltar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
     private javax.swing.JLabel lblVender;
     private javax.swing.JPanel painel1;
-    private javax.swing.JPanel painel2;
     private javax.swing.JPanel painel3;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTable tblListaProdutos;
