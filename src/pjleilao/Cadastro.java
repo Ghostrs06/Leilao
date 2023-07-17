@@ -1,5 +1,7 @@
 package pjleilao;
 
+import javax.swing.JOptionPane;
+
 public class Cadastro extends javax.swing.JFrame {
 
     public Cadastro() {
@@ -190,8 +192,8 @@ public class Cadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaActionPerformed
-        Listagem lista = new Listagem();
-        lista.setVisible(true);
+        //Listagem lista = new Listagem();
+        //lista.setVisible(true);
     }//GEN-LAST:event_btnListaActionPerformed
 
     public static void main(String args[]) {
@@ -215,4 +217,27 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
+
+    private void cadastrar() {
+        String n = txtNome.getText();
+        String v = txtValor.getText();
+        
+        if (n.isEmpty() || v.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor preencha todos os campos!");
+        } else {
+            Produtos p = new Produtos();
+            ProdutosDao dao = new ProdutosDao();
+            
+            double valor = Double.parseDouble(txtValor.getText());
+            String status = "A venda";
+            
+            p.setNome(n);
+            p.setValor(valor);
+            p.setStatus(status);
+            
+            if (dao.salvarCadastro(p) == 1) {
+                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
+            }
+        }
+    }
 }
